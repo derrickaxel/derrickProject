@@ -1,0 +1,8 @@
+{
+  "name": "ionic-messenger-starter",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
