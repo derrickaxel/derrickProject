@@ -5,7 +5,40 @@
 </ion-header>
 
 <ion-content padding style="background: url(../../assets/img/bg1.jpg) center; background-size: cover;">
-  <div class="position-bottom">
+  
+  <!-- <form name="loginForm" class="list " id="login-form1">
+            
+    <ion-list class=" " id="login-list2">
+
+      <div class="app-icon"></div>
+
+      <div style="height: 40px;" class="spacer"></div>
+
+      <ion-input ng-model="user.email" type="email" placeholder="Email"></ion-input>
+      <ion-input ng-model="user.password" type="password" placeholder="Password"></ion-input>
+      
+      <div>
+        <button ion-button block round color="facebook" >
+        Log in with Email
+        </button>
+        <ion-row>
+          <ion-col col-6> 
+            <button ion-button round clear >
+              SIGN UP
+            </button>
+          </ion-col>
+          <ion-col col-6> 
+            <button ion-button round clear >
+              FORGOT PASSWORD
+            </button>
+          </ion-col>
+        </ion-row>      
+      </div>
+    </ion-list>
+
+  </form>
+  <div class="position-bottom"> 
+              
     <button ion-button block color="facebook" (click)="loginWithFacebook()">
       Log in with Facebook
     </button>
@@ -15,5 +48,25 @@
     <button ion-button block color="favorite" (click)="loginWithGithub()">
       Log in with Github
     </button>
-  </div>
+  </div>   -->
+
+  <div style="height: 40px;" class="spacer"></div>
+
+  <div class="app-icon"></div>
+
+  <div style="height: 80px;" class="spacer"></div>
+
+	<div >               
+    <button ion-button block color="facebook" (click)="loginWithFacebook()">
+      Log in with Facebook
+    </button>
+    <button ion-button block color="google" (click)="loginWithGoogle()">
+      Log in with Google
+    </button>
+    <button ion-button block color="favorite" (click)="loginWithGithub()">
+      Log in with Github
+    </button>
+  </div>	
+
+
 </ion-content>
