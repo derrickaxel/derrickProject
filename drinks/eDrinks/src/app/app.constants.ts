@@ -14,10 +14,13 @@ export const googleWebClientId = 'GOOGLE WEB CLIENT ID';
 /** firebase tables */
 export const tableNames = {
     User               : 'users',
+    Drinks             : 'drinks',
+    userInfo           : 'info',
     Contacts           : 'contacts',
     ChatChannel        : 'chat_channels',
     ChatMember         : 'chat_members',
     ChatMessage        : 'chat_messages',
+    Wishlist           : 'wishlist',
     Cart               : 'cart',
     Order              : 'Orders',
     A_Coins            : 'coins bought before',

@@ -125,6 +125,64 @@ export class AuthProvider {
       });
     });
   }
+
+  getUserInfo(userId: string){
+    
+    if (userId)
+      return this.db.object(tableNames.User + '/' + userId + '/' + tableNames.userInfo);
+
+  }
+
+  setUserInfo(userId: string, info: any) {
+    return this.db.list(tableNames.User + '/' + userId + '/' + tableNames.userInfo)
+      .push({
+        lastName : info.Lname,
+        firstName: info.Fname,
+        DoB      : info.dob,
+        userName : info.username,
+        gender   : info.gender,
+        timestamp: firebase.database['ServerValue']['TIMESTAMP']
+      });
+  }
+
+  getUserWishlist(userId: string){
+    if (userId)
+      return this.db.object(tableNames.User + '/' + userId + '/' + tableNames.Wishlist);
+  }
+
+  setUserWishlist(userId: string, drinks: any) {
+    return this.db.list(tableNames.User + '/' + userId + '/' + tableNames.userInfo)
+      .push({
+        drinkName   : drinks.drinkName,
+        drinkType   : drinks.Type,
+        description : drinks.description,
+        price       : drinks.price,
+        quantityLeft: drinks.quantityLeft
+      });
+  }
+
+  getUserCart(userId: string){
+    if (userId)
+      return this.db.object(tableNames.User + '/' + userId + '/' + tableNames.Cart);
+  }
+
+  setUserCart(userId: string, quntity:string, drinks: any) {
+    return this.db.list(tableNames.User + '/' + userId + '/' + tableNames.userInfo)
+      .push({
+        drinkName      : drinks.drinkName,
+        drinkType      : drinks.Type,
+        description    : drinks.description,
+        price          : drinks.price,
+        quantityLeft   : drinks.quantityLeft,
+        quantityNeeded : quntity,
+      });
+  }
+
+  getUserOrder(userId: string){
+    if (userId)
+      return this.db.object(tableNames.User + '/' + userId + '/' + tableNames.Order);
+  }
+
 }
 
 export class UserModel {
@@ -133,4 +191,53 @@ export class UserModel {
   displayName?: string;
   photoURL?: string;
   providerData?: any;
+  userInfo?: any;
+  wishlist?: any;
+  order?: any;
+  cart?: any;
 }
+
+export class InfoModel{
+
+  lastName ?: string;
+  firstName?: string;
+  DoB      ?: string;
+  userName ?: string;
+  gender   ?: string;
+  timestamp?: string;
+}
+
+export class DrinkModel{
+
+  drinkName    ?: string;
+  drinkType    ?: string;
+  description  ?: string;
+  price        ?: string;
+  quantityLeft ?: string;
+
+}
+/*
+export class WishlistModel{
+
+  drinkName    ?: string;
+  description  ?: string;
+  price        ?: string;
+  quantityLeft ?: string;
+
+}
+
+export class CartModel{
+  drinkName    ?: string;
+  description  ?: string;
+  price        ?: string;
+  quantityLeft ?: string;
+  timestamp    ?: string;
+}
+
+export class OrderModel{
+  drinkName    ?: string;
+  description  ?: string;
+  price        ?: string;
+  quantityLeft ?: string;
+  timestamp    ?: string;
+}*/
