@@ -9,9 +9,10 @@ import { IonicPage, NavController } from 'ionic-angular';
 @IonicPage()
 export class TabsPage {
 
-  tab1Root = 'TabChatsPage'
-  tab2Root = 'TabContactsPage'
-  tab3Root = 'TabProfilePage'
+  tab1Root = 'TabHomePage'
+  tab2Root = 'TabChatsPage'
+  tab3Root = 'TabContactsPage'
+  tab4Root = 'TabProfilePage'
 
 
   constructor(public navCtrl: NavController) {}

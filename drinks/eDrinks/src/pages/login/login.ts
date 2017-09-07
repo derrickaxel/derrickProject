@@ -66,6 +66,8 @@ export class LoginPage {
       });
   }
 
+  loginWithTwitter(){}
+
   private updateProfile(user: any) {
     return this.authProvider.updateProfile({
       uid        : user.uid,
