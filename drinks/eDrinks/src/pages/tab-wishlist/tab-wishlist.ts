@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, App, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, App, NavParams, ToastController, LoadingController } from 'ionic-angular';
 
 import { AuthProvider, UserModel } from '../../providers/auth/auth';
 import { ChatsProvider, MessageModel } from '../../providers/chats/chats';
@@ -12,10 +12,12 @@ import { ChatsProvider, MessageModel } from '../../providers/chats/chats';
 export class TabWishlistPage {
   messages: Array<MessageModel>;
   user: UserModel;
+  isThereAwishlist: boolean;
 
   constructor(
     public app: App, 
     public navParams: NavParams, 
+    public loadingCtrl: LoadingController,
     public toastCtrl: ToastController, 
     public authProvider: AuthProvider,
     public chatProvider: ChatsProvider,
@@ -24,25 +26,20 @@ export class TabWishlistPage {
 
   ionViewDidLoad() {
     this.authProvider.getFullProfile()
-      .subscribe((user: any) => this.user = user);
-    
-    this.chatProvider.getLastMessages()
-      .subscribe((messages) => this.messages = messages);
-  }
-
-  /**
-   * join chat chanel
-   */
-  joinChannel(channel: string | any = 'general') {
-    this.app.getRootNav().push('ChatMessagePage', {user: this.user});
-  }
-
-  joinDirectChat() {
-    this.toastCtrl.create({
-      duration: 1500,
-      position: 'top',
-      message: 'Sorry, not allowed to chat directly.'
-    }).present();
+      .subscribe((user: any) => {
+        this.user = user;
+        if(user){
+          if(user.wishlist)
+            this.isThereAwishlist = true;
+          else
+            this.isThereAwishlist = false;
+        }
+        else
+          this.isThereAwishlist = false;
+      }, (error)=> {
+        console.log('Error: ' + JSON.stringify(error));
+      });
+      
   }
 
 }

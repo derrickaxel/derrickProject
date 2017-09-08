@@ -1,11 +1,141 @@
 page-tab-home {
-    ion-slides{
-        height: 30%;
+    // ion-slides{
+    //     height: 30%;
+    //     width: 100%;
+    // }
+    // ion-slides ion-slide img{
+    //     height: 100% !important;
+    //     width: 100% !important;
+    // }
+    ion-item-group{
+        height: 100% !important;
         width: 100%;
     }
-    ion-slides ion-slide img{
-        height: 100% !important;
-        width: 100% !important;
+    .deals{
+        height: 25% !important;
+        width: 100%;
     }
-    
+    .category{
+        height: 15% !important;
+        width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    ion-item{
+        padding: 0px !important;
+    }
+}
+
+/**
+ * Variables
+ */
+
+$white:    #FFF;
+$blue:     #1B3255;
+$gray-de:  #DEDEDE;
+$blue-48:  #4081BF;
+$blue-4a:  #40A6BF;
+$gray-89:  #898989;
+$gray-72:  #727272;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin background-horizontal($left, $middle, $right) {
+  background: $left;
+  background: -webkit-linear-gradient(left, $left 0%, $middle 50%, $right 100%);
+  background:    -moz-linear-gradient(left, $left 0%, $middle 50%, $right 100%);
+  background:         linear-gradient(to right, $left 0%, $middle 50%, $right 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$left', endColorstr='$right',GradientType=0);
+}
+/* End */
+
+.chat-list-wrap {
+  .list {
+    margin: 0;
+    .item {
+      margin: 0;
+      padding: 20px 10px;
+      background-color: $blue;
+      color: $white;
+      border: 1px solid $gray-de;
+      .item-inner {
+        border-bottom: none;
+        .label {
+          margin: 0;
+          img {
+            float: left;
+            max-height: 100px;
+            max-width: 100px;
+            height: 100px;
+            width: 100px;
+            margin-right: 20px;
+            border: 5px solid $white;
+            @include border-radius(100%);
+          }
+          .chat-list-title {
+            margin-bottom: 6px;
+            font-size: 20px;
+          }
+          .chat-list-sub-title,
+          .chat-list-price {
+            margin-bottom: 6px;
+            font-size: 16px;
+          }
+          .chat-list-discount {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 18px;
+            color: $white;
+            font-size: 16px;
+            opacity: 1;
+            -webkit-border-radius: 30px;
+            border-radius: 30px;
+            @include background-horizontal($blue-48, $blue-4a, $blue-48);
+          }
+        }
+      }
+    }
+  }
+  &.grid-view {
+    .item {
+      float: left;
+      width: 50%;
+      padding: 30px 15px;
+      text-align: center;
+      .item-inner {
+        .label {
+          img {
+            float: none;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Header */
+.main-header {
+  .toolbar {
+    min-height: 60px;
+    .toolbar-background {
+      height: 60px;
+      @include background-horizontal($blue-48, $blue-4a, $blue-48);
+    }
+    .toolbar-title {
+    //   font-size: 22px;
+      /*text-align: center;*/
+    }
+    .bar-button-default-md:hover:not(.disable-hover) {
+      color: $white;
+    }
+  }
 }

@@ -20,6 +20,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { Keyboard } from '@ionic-native/keyboard';
 
 import { AuthProvider } from '../providers/auth/auth';
+import { GlobalVarProvider } from '../providers/GlobalVar/globalVar';
 import { ChatsProvider } from '../providers/chats/chats';
 import { ContactsProvider } from '../providers/contacts/contacts';
 
@@ -52,6 +53,7 @@ import { ContactsProvider } from '../providers/contacts/contacts';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     ChatsProvider,
+    GlobalVarProvider,
     ContactsProvider
   ]
 })
