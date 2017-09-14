@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { wholeData } from '../../app/app.constants';
+
+import { ModalInfo } from '../modal-info/modal-info';
+
 @IonicPage()
 @Component({
   selector: 'page-tab-home',
@@ -12,9 +15,7 @@ export class TabHomePage {
 
   product: any;
 
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public authProvider: AuthProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public authProvider: AuthProvider , public modalCtrl: ModalController) {
     this.user.photoURL = 'assets/img/noavatar.png';
   }
 
@@ -24,6 +25,11 @@ export class TabHomePage {
     this.authProvider.currentUser
       .subscribe(user => {
         loading.dismiss();
+        console.log("ok");
+        if (user.userInfo === null)
+        {
+          console.log("userInfo is empty");
+        }
         this.user.displayName  = user.displayName;
         this.user.email        = user.email || user.providerData[0].email || 'Not set yet.';
         this.user.photoURL     = user.photoURL || this.user.photoURL;
@@ -36,6 +42,16 @@ export class TabHomePage {
 
   changeProfile() {
     
+  }
+
+  // Set post modal
+  presentModal() {
+    let modal = this.modalCtrl.create(ModalInfo, 
+    { // Send data to modal
+      
+    }, // This data comes from API!
+    { showBackdrop: true, enableBackdropDismiss: true });
+    modal.present();
   }
 
 

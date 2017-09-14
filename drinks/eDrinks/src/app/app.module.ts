@@ -24,10 +24,13 @@ import { GlobalVarProvider } from '../providers/GlobalVar/globalVar';
 import { ChatsProvider } from '../providers/chats/chats';
 import { ContactsProvider } from '../providers/contacts/contacts';
 
+import { ModalInfo } from '../pages/modal-info/modal-info';
+
 
 @NgModule({
   declarations: [
     MyApp,
+    ModalInfo,
     ContactCardComponent,
     ImagePickerComponent,
     LoaderComponent,
@@ -43,6 +46,7 @@ import { ContactsProvider } from '../providers/contacts/contacts';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    ModalInfo,
   ],
   providers: [
     StatusBar,
